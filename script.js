@@ -7,7 +7,7 @@ var timeBlocks = $(".description");
 
 var updateTimeBlockClasses = function () {
   var currentHourOffset = new Date().getHours() - 9;
-  console.log(currentHourOffset)
+  console.log(currentHourOffset);
   $.each(timeBlocks, function (i, block) {
     if (currentHourOffset > i) {
       $(block).addClass("past");
@@ -18,16 +18,18 @@ var updateTimeBlockClasses = function () {
     }
   });
 };
-//click saveBtn 
-$('.saveBtn').each(function(i,btn){
-   console.log (btn)
-   $(btn).on('click',function(event){
-   var text= $(event.target).siblings('.description').val().trim()
-   console.log (text)
-   }) 
-
-})
-
+//click saveBtn
+$(".saveBtn").each(function (i, btn) {
+  console.log(btn);
+  var storage=localStorage .getItem('hour')
+  $(btn).siblings('.description').val(storage)
+  $(btn).on("click", function (event) {
+    var text = $(event.target).siblings(".description").val().trim();
+    var time= $(event.target).parent().attr ('id')
+    console.log(text);
+    localStorage.setItem("hour", text);
+  });
+});
 
 updateTimeBlockClasses();
 //new Date (1504725855) will this commnand show the current date at the top of the page?
