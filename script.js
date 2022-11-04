@@ -20,12 +20,11 @@ var updateTimeBlockClasses = function () {
 };
 //click saveBtn
 $(".saveBtn").each(function (i, btn) {
-  console.log(btn);
   var hour =$(btn).parent().attr ('id')
   var storage=localStorage .getItem(hour)
   $(btn).siblings('.description').val(storage)
   $(btn).on("click", function (event) {
-    var text = $(event.target).siblings(".description").val().trim();
+    var text = $(event.currentTarget).siblings(".description").val().trim();
     var time= $(event.target).parent().attr ('id')
     console.log(text);
     localStorage.setItem(time, text);
